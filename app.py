@@ -1,4 +1,5 @@
 import pickle
+import __main__
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -7,6 +8,8 @@ class DeliveryMdl:
     def predict(self, dist, weight):
         time = 0.5 + (dist * 0.2) + (weight * 0.1)
         return time
+
+__main__.DeliveryMdl = DeliveryMdl
 
 with open("delivery_mdl.pkl", "rb") as f:
     model = pickle.load(f)
